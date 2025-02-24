@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isValid(string s) {
+         stack<char> st;
+        unordered_map<char, char> brackets = {{')', '('}, {'}', '{'}, {']', '['}};
+
+        for (char c : s) {
+            if (brackets.count(c)) { // If it's a closing bracket
+                if (st.empty() || st.top() != brackets[c]) {
+                    return false;
+                }
+                st.pop(); // Pop the matching opening bracket
+            } else { // If it's an opening bracket
+                st.push(c);
+            }
+        }
+        return st.empty(); // If stack is empty, it's valid
+    }
+};
