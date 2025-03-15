@@ -1,0 +1,28 @@
+---------------OPTIMUM APPROACH------------------------------
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode fast=head;
+        ListNode slow=head;
+        while(fast!= null&& fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(fast==slow) return true;
+        }
+        return false;
+    }
+}
+---------c++-----------
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        map<ListNode *,int> mapp;
+        ListNode * temp=head;
+    while(temp!=NULL)
+    {
+        if(mapp.contains(temp)) return true;
+        mapp[temp]=1;
+        temp=temp->next;
+    }
+    return false;
+    }
+};
